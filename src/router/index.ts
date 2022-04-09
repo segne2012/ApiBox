@@ -4,7 +4,7 @@ let routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Home/index.vue')
+        redirect: '/home',
     },
     {
         path: '/home',
