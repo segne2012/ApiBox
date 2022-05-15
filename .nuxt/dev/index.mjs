@@ -5,7 +5,7 @@ import path, { join } from 'path';
 import fs, { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/webWorkspace/ApiBox/node_modules/std-env/dist/index.mjs';
-import { toEventHandler, defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, eventHandler, useQuery } from 'file:///Users/webWorkspace/ApiBox/node_modules/h3/dist/index.mjs';
+import { toEventHandler, defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, useQuery, eventHandler } from 'file:///Users/webWorkspace/ApiBox/node_modules/h3/dist/index.mjs';
 import { createFetch as createFetch$1, Headers } from 'file:///Users/webWorkspace/ApiBox/node_modules/ohmyfetch/dist/node.mjs';
 import destr from 'file:///Users/webWorkspace/ApiBox/node_modules/destr/dist/index.mjs';
 import { createRouter as createRouter$1 } from 'file:///Users/webWorkspace/ApiBox/node_modules/radix3/dist/index.mjs';
@@ -413,6 +413,9 @@ const projectsObj = {
 };
 
 const index = (to, from) => {
+  console.log(to.url);
+  console.log(useQuery(to));
+  console.log(to.method);
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       projectsObj.getAllProjects().then((data) => {
