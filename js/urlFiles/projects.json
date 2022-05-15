@@ -1,0 +1,7 @@
+{
+    "baseProject": {
+        "name": "string",
+        "basePath": "string",
+        "index": "not_analyzed"
+    }
+}

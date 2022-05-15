@@ -1,8 +1,8 @@
 import 'file:///Users/webWorkspace/ApiBox/node_modules/unenv/runtime/polyfill/fetch.node.mjs';
 import { Server } from 'http';
 import { tmpdir } from 'os';
-import { join } from 'path';
-import { mkdirSync } from 'fs';
+import path, { join } from 'path';
+import fs, { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
 import { provider, isWindows } from 'file:///Users/webWorkspace/ApiBox/node_modules/std-env/dist/index.mjs';
 import { toEventHandler, defineEventHandler, handleCacheHeaders, createEvent, createApp, createRouter, lazyEventHandler, eventHandler, useQuery } from 'file:///Users/webWorkspace/ApiBox/node_modules/h3/dist/index.mjs';
@@ -311,9 +311,11 @@ const errorHandler = (async function errorhandler(_error, event) {
   event.res.end(html);
 });
 
+const _b8f71b = () => Promise.resolve().then(function () { return index$1; });
 const _84101f = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
+  { route: '', handler: _b8f71b, lazy: true, method: undefined },
   { route: '/__nuxt_error', handler: _84101f, lazy: true, method: undefined },
   { route: '/**', handler: _84101f, lazy: true, method: undefined }
 ];
@@ -385,6 +387,47 @@ server.listen(listenAddress, () => {
 });
 process.on("unhandledRejection", (err) => console.error("[nitro] [dev] [unhandledRejection] " + err));
 process.on("uncaughtException", (err) => console.error("[nitro] [dev] [uncaughtException] " + err));
+
+function getName() {
+  let firstName = ["\u8D75", "\u94B1", "\u5B59", "\u674E", "\u5468", "\u5434", "\u90D1", "\u738B", "\u51AF", "\u9648", "\u891A", "\u536B", "\u848B", "\u6C88", "\u97E9", "\u6768", "\u6731", "\u79E6", "\u5C24", "\u8BB8", "\u4F55", "\u5415", "\u65BD", "\u5F20", "\u5B54", "\u66F9", "\u4E25", "\u534E", "\u91D1", "\u9B4F", "\u9676", "\u59DC", "\u621A", "\u8C22", "\u90B9", "\u55BB", "\u67CF", "\u6C34", "\u7AA6", "\u7AE0", "\u4E91", "\u82CF", "\u6F58", "\u845B", "\u595A", "\u8303", "\u5F6D", "\u90CE", "\u9C81", "\u97E6", "\u660C", "\u9A6C", "\u82D7", "\u51E4", "\u82B1", "\u65B9", "\u4FDE", "\u4EFB", "\u8881", "\u67F3", "\u9146", "\u9C8D", "\u53F2", "\u5510", "\u8D39", "\u5EC9", "\u5C91", "\u859B", "\u96F7", "\u8D3A", "\u502A", "\u6C64", "\u6ED5", "\u6BB7", "\u7F57", "\u6BD5", "\u90DD", "\u90AC", "\u5B89", "\u5E38", "\u4E50", "\u4E8E", "\u65F6", "\u5085", "\u76AE", "\u535E", "\u9F50", "\u5EB7", "\u4F0D", "\u4F59", "\u5143", "\u535C", "\u987E", "\u5B5F", "\u5E73", "\u9EC4", "\u548C", "\u7A46", "\u8427", "\u5C39"];
+  let lastName = ["\u5B50\u7487", "\u6DFC", "\u56FD\u680B", "\u592B\u5B50", "\u745E\u5802", "\u751C", "\u654F", "\u5C1A", "\u56FD\u8D24", "\u8D3A\u7965", "\u6668\u6D9B", "\u660A\u8F69", "\u6613\u8F69", "\u76CA\u8FB0", "\u76CA\u5E06", "\u76CA\u5189", "\u747E\u6625", "\u747E\u6606", "\u6625\u9F50", "\u6768", "\u6587\u660A", "\u4E1C\u4E1C", "\u96C4\u9716", "\u6D69\u6668", "\u7199\u6DB5", "\u6EB6\u6EB6", "\u51B0\u67AB", "\u6B23\u6B23", "\u5B9C\u8C6A", "\u6B23\u6167", "\u5EFA\u653F", "\u7F8E\u6B23", "\u6DD1\u6167", "\u6587\u8F69", "\u6587\u6770", "\u6B23\u6E90", "\u5FE0\u6797", "\u6995\u6DA6", "\u6B23\u6C5D", "\u6167\u5609", "\u65B0\u5EFA", "\u5EFA\u6797", "\u4EA6\u83F2", "\u6797", "\u51B0\u6D01", "\u4F73\u6B23", "\u6DB5\u6DB5", "\u79B9\u8FB0", "\u6DF3\u7F8E", "\u6CFD\u60E0", "\u4F1F\u6D0B", "\u6DB5\u8D8A", "\u6DA6\u4E3D", "\u7FD4", "\u6DD1\u534E", "\u6676\u83B9", "\u51CC\u6676", "\u82D2\u6EAA", "\u96E8\u6DB5", "\u5609\u6021", "\u4F73\u6BC5", "\u5B50\u8FB0", "\u4F73\u742A", "\u7D2B\u8F69", "\u745E\u8FB0", "\u6615\u854A", "\u840C", "\u660E\u8FDC", "\u6B23\u5B9C", "\u6CFD\u8FDC", "\u6B23\u6021", "\u4F73\u6021", "\u4F73\u60E0", "\u6668\u831C", "\u6668\u7490", "\u8FD0\u660A", "\u6C5D\u946B", "\u6DD1\u541B", "\u6676\u6EE2", "\u6DA6\u838E", "\u6995\u6C55", "\u4F73\u94B0", "\u4F73\u7389", "\u6653\u5E86", "\u4E00\u9E23", "\u8BED\u6668", "\u6DFB\u6C60", "\u6DFB\u660A", "\u96E8\u6CFD", "\u96C5\u6657", "\u96C5\u6DB5", "\u6E05\u598D", "\u8BD7\u60A6", "\u5609\u4E50", "\u6668\u6DB5", "\u5929\u8D6B", "\u73A5\u50B2", "\u4F73\u660A", "\u5929\u660A", "\u840C\u840C", "\u82E5\u840C", "\u82E5\u67AB", "\u82E5\u5170", "\u82E5\u84DD", "\u82E5\u7075", "\u82B7\u5929", "\u82B7\u96EA", "\u82B7\u5BB9", "\u8BED\u67AB", "\u590F\u69D0", "\u590F\u5170", "\u6653\u7B60", "\u6653\u69D0", "\u6653\u971C", "\u6653\u9732", "\u6653\u7075", "\u7075\u5349", "\u7075\u69D0", "\u6DD1\u534E", "\u6DD1\u9759", "\u6DD1\u7136", "\u6DD1\u7A46", "\u6DD1\u4E91", "\u6DD1\u6167", "\u6DD1\u5A49", "\u6674\u96EA", "\u6674\u5DDD", "\u6674\u5C9A", "\u6674\u971E", "\u6674\u4E3D", "\u6674\u5DE7", "\u6674\u66E6", "\u6674\u67AB", "\u6674\u6717", "\u6674\u65E5", "\u6674\u6843", "\u6674\u5A49", "\u6674\u5A1F", "\u6674\u971E", "\u6674\u96EF", "\u6674\u8431", "\u6674\u8431", "\u6674\u66E6", "\u6674\u5C9A", "\u6674\u67D4", "\u6674\u5349", "\u6674", "\u6674\u857E", "\u6674\u5C9A", "\u6674\u66DC", "\u6674\u67AB", "\u6674\u4E3D", "\u6674\u5DE7"];
+  let firstNameIndex = Math.floor(Math.random() * firstName.length);
+  let allName = firstName[firstNameIndex].concat(lastName[Math.floor(Math.random() * lastName.length)]);
+  return new String(allName);
+}
+
+function getAllProjects() {
+  const __dirname = path.resolve();
+  return new Promise((resolve, reject) => {
+    fs.readFile(__dirname + "/js/urlFiles/projects.json", "utf-8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(JSON.parse(data));
+      }
+    });
+  });
+}
+const projectsObj = {
+  getAllProjects
+};
+
+const index = (to, from) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      projectsObj.getAllProjects().then((data) => {
+        console.log(data);
+        console.log(data.baseProject);
+      });
+      resolve(getName());
+    }, 1e3);
+  });
+};
+
+const index$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': index
+});
 
 function buildAssetsURL(...path) {
   return joinURL(publicAssetsURL(), useRuntimeConfig().app.buildAssetsDir, ...path);
