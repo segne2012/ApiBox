@@ -312,10 +312,12 @@ const errorHandler = (async function errorhandler(_error, event) {
 });
 
 const _b8f71b = () => Promise.resolve().then(function () { return index$1; });
+const _56b294 = () => Promise.resolve().then(function () { return projects$1; });
 const _84101f = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
   { route: '', handler: _b8f71b, lazy: true, method: undefined },
+  { route: '/api/projects', handler: _56b294, lazy: true, method: undefined },
   { route: '/__nuxt_error', handler: _84101f, lazy: true, method: undefined },
   { route: '/**', handler: _84101f, lazy: true, method: undefined }
 ];
@@ -408,28 +410,50 @@ function getAllProjects() {
     });
   });
 }
-const projectsObj = {
+const projects$2 = {
   getAllProjects
 };
 
-const index = (to, from) => {
-  console.log(to.url);
-  console.log(useQuery(to));
-  console.log(to.method);
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      projectsObj.getAllProjects().then((data) => {
-        console.log(data);
-        console.log(data.baseProject);
+const index = (to, from, next) => {
+  let method = to.method;
+  let params = useQuery(to);
+  switch (to.url) {
+    case "/":
+      $fetch("/project", { method, body: params });
+      next();
+      return;
+    case "/project":
+      next();
+      break;
+    default:
+      return new Promise((resolve, reject) => {
+        projects$2.getAllProjects().then((data) => {
+          console.log(data, "----name data----");
+        });
+        let name = getName();
+        resolve(new String(name));
       });
-      resolve(getName());
-    }, 1e3);
-  });
+  }
 };
 
 const index$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   'default': index
+});
+
+const projects = (to, from) => {
+  console.log("----in api ======");
+  return new Promise((resolve, reject) => {
+    projects$2.getAllProjects().then((data) => {
+      console.log(data.baseProject);
+      resolve(data);
+    });
+  });
+};
+
+const projects$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  'default': projects
 });
 
 function buildAssetsURL(...path) {
